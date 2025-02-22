@@ -15,6 +15,12 @@ namespace EmployeeManagement.DAL.Implementations
                 new() {Id = 3, Name ="John", Department = "IT", Email = "John@gmail.com"}
             };
         }
+
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return _employeeList;
+        }
+
         public Employee GetEmployeeById(int id)
         {
             return _employeeList.FirstOrDefault(x => x.Id == id);
