@@ -4,6 +4,8 @@ using EmployeeManagement.DAL.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc(); // Enables MVC 
+//builder.Services.AddMvc().AddXmlSerializerFormatters(); // Enables MVC 
+
 builder.Services.AddSingleton<IEmployeeRepository, EmployeeRepository>(); //Single instance. Used throught the app lifecycle
 
 var app = builder.Build();

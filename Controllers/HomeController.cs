@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.DAL.Interfaces;
+using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Controllers
@@ -13,6 +14,11 @@ namespace EmployeeManagement.Controllers
         public string Index()
         {
             return _employeeRepository.GetEmployeeById(1).Name;
+        }
+        public ViewResult Details()
+        {
+            Employee employee = _employeeRepository.GetEmployeeById(1);
+            return View(employee);
         }
     }
 }
