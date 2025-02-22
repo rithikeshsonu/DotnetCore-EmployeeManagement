@@ -18,9 +18,8 @@ namespace EmployeeManagement.Controllers
         public ViewResult Details()
         {
             Employee employee = _employeeRepository.GetEmployeeById(1);
-            ViewBag.Employee = employee;
             ViewBag.PageTitle = "Employee Details";
-            return View();
+            return View(employee); //To pass data to view
         }
     }
 }
