@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.DAL.Interfaces;
 using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Controllers
@@ -17,9 +18,12 @@ namespace EmployeeManagement.Controllers
         }
         public ViewResult Details()
         {
-            Employee employee = _employeeRepository.GetEmployeeById(1);
-            ViewBag.PageTitle = "Employee Details";
-            return View(employee); //To pass data to view
+            HomeDetailsViewModel viewModel = new()
+            {
+                Employee = _employeeRepository.GetEmployeeById(1),
+                PageTitle = "Employee Details"
+            };
+            return View(viewModel); //To pass data to view
         }
     }
 }
