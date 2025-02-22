@@ -8,7 +8,7 @@ var app = builder.Build();
 
 //var logger = app.Services.GetRequiredService<ILogger<Program>>();
 //logger.LogInformation(myValue);
-//app.MapGet("/", () => $"Hello World");
+app.MapGet("/", () => $"Hello World");
 //To have your custom default files
 //DefaultFilesOptions defaultFilesOptions = new();
 //defaultFilesOptions.DefaultFileNames.Clear();
@@ -18,10 +18,11 @@ var app = builder.Build();
 ////app.UseDefaultFiles(); //renders index.html or default.html file by default from wwwroot folder
 //app.UseStaticFiles(); //To serve images in wwwroot folder
 
-FileServerOptions fileServerOptions = new();
-fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
-fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
-app.UseFileServer(fileServerOptions); //combines both UseDefaultFiles and UseStaticFiles in one.
+//FileServerOptions fileServerOptions = new();
+//fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
+//fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
+//app.UseFileServer(fileServerOptions); //combines both UseDefaultFiles and UseStaticFiles in one.
+app.UseFileServer();
 
 
 //app.Use(async (context, next) =>
