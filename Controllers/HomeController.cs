@@ -18,7 +18,9 @@ namespace EmployeeManagement.Controllers
         public ViewResult Details()
         {
             Employee employee = _employeeRepository.GetEmployeeById(1);
-            return View(employee);
+            ViewData["Employee"] = employee;
+            ViewData["PageTitle"] = "Employee Details";
+            return View();
         }
     }
 }
