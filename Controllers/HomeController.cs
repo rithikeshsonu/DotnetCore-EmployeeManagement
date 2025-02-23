@@ -17,11 +17,12 @@ namespace EmployeeManagement.Controllers
             var employees = _employeeRepository.GetAllEmployees();
             return View(employees);
         }
-        public ViewResult Details()
+        //[Route("Details/{id?}")]
+        public ViewResult Details(int? id)
         {
             HomeDetailsViewModel viewModel = new()
             {
-                Employee = _employeeRepository.GetEmployeeById(1),
+                Employee = _employeeRepository.GetEmployeeById(id ?? 1),
                 PageTitle = "Employee Details"
             };
             return View(viewModel); //To pass data to view
