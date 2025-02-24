@@ -27,5 +27,10 @@ namespace EmployeeManagement.Controllers
             };
             return View(viewModel); //To pass data to view
         }
+        public ActionResult Create()
+        {
+
+            return View();
+        }
     }
 }

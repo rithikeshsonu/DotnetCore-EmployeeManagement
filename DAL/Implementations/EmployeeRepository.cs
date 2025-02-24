@@ -10,9 +10,9 @@ namespace EmployeeManagement.DAL.Implementations
         {
             _employeeList = new List<Employee>()
             {
-                new() {Id = 1, Name ="Mary", Department = "HR", Email = "Mary@gmail.com"},
-                new() {Id = 2, Name ="Sonu", Department = "Tech", Email = "Sonu@gmail.com"},
-                new() {Id = 3, Name ="John", Department = "IT", Email = "John@gmail.com"}
+                new() {Id = 1, Name ="Mary", Department = Dept.HR, Email = "Mary@gmail.com"},
+                new() {Id = 2, Name ="Sonu", Department = Dept.Payroll, Email = "Sonu@gmail.com"},
+                new() {Id = 3, Name ="John", Department = Dept.IT, Email = "John@gmail.com"}
             };
         }
 
