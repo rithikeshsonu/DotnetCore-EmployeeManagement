@@ -6,5 +6,6 @@ namespace EmployeeManagement.DAL.Interfaces
     {
         Employee GetEmployeeById(int id);
         IEnumerable<Employee> GetAllEmployees();
+        Employee AddEmployee(Employee employee);
     }
 }
