@@ -8,10 +8,6 @@ builder.Services.AddMvc(); // Enables MVC
 
 builder.Services.AddSingleton<IEmployeeRepository, EmployeeRepository>(); //Single instance. Used throught the app lifecycle
 
-//builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>(); //Single instance. Used throught the app lifecycle
-//builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>(); //Single instance. Used throught the app lifecycle
-
-
 var app = builder.Build();
 
 app.UseStaticFiles();
