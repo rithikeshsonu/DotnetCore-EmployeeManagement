@@ -17,7 +17,6 @@ namespace EmployeeManagement.Controllers
             var employees = _employeeRepository.GetAllEmployees();
             return View(employees);
         }
-        //[Route("Details/{id?}")]
         public ViewResult Details(int? id)
         {
             HomeDetailsViewModel viewModel = new()
