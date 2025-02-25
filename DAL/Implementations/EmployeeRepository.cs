@@ -32,5 +32,26 @@ namespace EmployeeManagement.DAL.Implementations
         {
             return _employeeList.FirstOrDefault(x => x.Id == id);
         }
+
+        public Employee UpdateEmployee(Employee employeeChanges)
+        {
+            Employee employee = _employeeList.FirstOrDefault(x => x.Id == employeeChanges.Id);
+            if(employee != null)
+            {
+                employee.Name = employeeChanges.Name;
+                employee.Department = employeeChanges.Department;
+                employee.Email = employeeChanges.Email;
+            }
+            return employee;
+        }
+        public Employee DeleteEmployee(int id)
+        {
+            Employee employee = _employeeList.FirstOrDefault(x => x.Id == id);
+            if(employee != null)
+            {
+                _employeeList.Remove(employee);
+            }
+            return employee;
+        }
     }
 }
