@@ -18,6 +18,20 @@ namespace EmployeeManagement.Models
                     Name = "Mark",
                     Department = Dept.IT,
                     Email = "sonu@gmail.com",
+                },
+                new Employee()
+                {
+                    Id = 2,
+                    Name = "Sonu",
+                    Department = Dept.HR,
+                    Email = "mark@ymail.com"
+                },
+                new Employee()
+                {
+                    Id = 3,
+                    Name = "John",
+                    Department = Dept.Payroll,
+                    Email = "john@ymail.com"
                 }
             );
         }
