@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-namespace EmployeeManagement.Models
+﻿using EmployeeManagement.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace EmployeeManagement.ViewModels
 {
-    public class Employee
+    public class EmployeeCreateViewModel
     {
         public int Id { get; set; }
         [Required, MaxLength(50, ErrorMessage = "Name must not exceed 50 chars")]
@@ -9,6 +11,6 @@ namespace EmployeeManagement.Models
         [Required, Display(Name = "Office Email"), RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Invalid email format")]
         public string Email { get; set; } = string.Empty;
         public Dept? Department { get; set; }
-        public string PhotoPath { get; set; } = string.Empty;
+        public IFormFile Photo { get; set; } 
     }
 }

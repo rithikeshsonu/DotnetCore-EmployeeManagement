@@ -8,9 +8,11 @@ namespace EmployeeManagement.Controllers
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
-        public HomeController(IEmployeeRepository employeeRepository)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public HomeController(IEmployeeRepository employeeRepository, IWebHostEnvironment hostingEnvironment)
         {
             _employeeRepository = employeeRepository;
+            _hostingEnvironment = hostingEnvironment;
         }
         public ViewResult Index()
         {
@@ -27,11 +29,26 @@ namespace EmployeeManagement.Controllers
             return View(viewModel); //To pass data to view
         }
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(EmployeeCreateViewModel model)
         {
             if(ModelState.IsValid)
             {
-                Employee newEmployee = _employeeRepository.AddEmployee(employee);
+                string uniqueFileName = null;
+                if (model.Photo!= null)
+                {
+                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+                Employee newEmployee = new()
+                {
+                    Name = model.Name,
+                    Department = model.Department,
+                    Email = model.Email,
+                    PhotoPath = uniqueFileName
+                };
+                _employeeRepository.AddEmployee(newEmployee);
                 return RedirectToAction("details", new { id = newEmployee.Id });
             }
             return View();
