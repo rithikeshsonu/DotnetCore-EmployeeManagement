@@ -35,17 +35,17 @@ namespace EmployeeManagement.Controllers
             if(ModelState.IsValid)
             {
                 string uniqueFileName = null;
-                if (model.Photos!= null)
+                if (model.Photo!= null)
                 {
-                    foreach(IFormFile photo in model.Photos)
-                    {
-                        string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-                        uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
+                    //foreach(IFormFile photo in model.Photos)
+                    //{
+                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
                         string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                        photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                    }
+                        model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
-                    
+                //}
+
                 Employee newEmployee = new()
                 {
                     Name = model.Name,
@@ -62,6 +62,20 @@ namespace EmployeeManagement.Controllers
         public ViewResult Create()
         {
             return View();
+        }
+        public ViewResult Edit(int id)
+        {
+            Employee employee = _employeeRepository.GetEmployeeById(id);
+            EmployeeEditViewModel employeeEditViewModel = new()
+            {
+                Id = employee.Id,
+                Name = employee.Name,
+                Email = employee.Email,
+                Department = employee.Department,
+                ExistingPhotoPath = employee.PhotoPath,
+            };
+            
+            return View(employeeEditViewModel);
         }
     }
 }

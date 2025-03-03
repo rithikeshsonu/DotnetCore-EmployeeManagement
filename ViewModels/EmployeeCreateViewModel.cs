@@ -11,6 +11,6 @@ namespace EmployeeManagement.ViewModels
         [Required, Display(Name = "Office Email"), RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Invalid email format")]
         public string Email { get; set; } = string.Empty;
         public Dept? Department { get; set; }
-        public List<IFormFile> Photos { get; set; } 
+        public IFormFile Photo { get; set; } 
     }
 }
