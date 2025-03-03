@@ -1,3 +1,13 @@
 ﻿.btn{
     width: 75px;
 }
+.imageThumbnail{
+    height: 200px;
+    width: auto;
+}
+
+card-deck .card {
+    display: inline-block;
+    width: calc(30.33% - 15px);  Adjust width as per requirement 
+    margin-bottom: 15px;
+}
